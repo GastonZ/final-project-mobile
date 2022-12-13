@@ -1,3 +1,4 @@
+
 import React from "react";
 
 import {
@@ -14,7 +15,8 @@ import CarOne from "../components/CarOne";
 import CarTwo from "../components/CarTwo";
 import CarThree from "../components/CarThree";
 import CarFour from "../components/CarFour"
-
+import React from 'react'
+import { ScrollView, StyleSheet, Text, View , Dimensions,Pressable} from 'react-native';
 const windowHeight = Dimensions.get('window').height;
 
 export default function Home() {
@@ -38,6 +40,10 @@ export default function Home() {
       <CarTwo></CarTwo>
       <CarThree></CarThree>
       <CarFour></CarFour>
+    <ScrollView style={styles.container}>
+    <Pressable
+          style={styles.ButtonDetails}
+        ></Pressable>
     </ScrollView>
   );
 }
