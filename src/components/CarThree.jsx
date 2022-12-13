@@ -1,43 +1,23 @@
+import { View, Text, StyleSheet, Dimensions, ImageBackground, ScrollView } from "react-native";
 import React from "react";
-
-import {
-  ImageBackground,
-  ScrollView,
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  Dimensions,
-
-} from "react-native";
-import CarOne from "../components/CarOne";
-import CarTwo from "../components/CarTwo";
-import CarThree from "../components/CarThree";
-import CarFour from "../components/CarFour"
-
 const windowHeight = Dimensions.get('window').height;
 
-export default function Home() {
+export default function CarOne() {
   const image = {
-    uri: "https://i.pinimg.com/originals/7e/21/48/7e2148953987ce74723756b779932271.jpg",
+    uri:  "https://w0.peakpx.com/wallpaper/351/764/HD-wallpaper-auto-deportivo-car-cars-thumbnail.jpg",
   };
-
   return (
     <ScrollView>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
         <View style={styles.container}>
           <Text style={styles.text}>
             <Text style={styles.decored}>[ </Text>
-            Model S
+            Model 1
             <Text style={styles.decored}> ]</Text>
           </Text>
           <Text style={styles.text5}>Mobile version</Text>
         </View>
       </ImageBackground>
-      <CarOne></CarOne>
-      <CarTwo></CarTwo>
-      <CarThree></CarThree>
-      <CarFour></CarFour>
     </ScrollView>
   );
 }
@@ -77,26 +57,5 @@ const styles = StyleSheet.create({
 
   decored: {
     color: "#ff3648",
-  },
-
-  secondarytexthome: {
-    color: "#1a1a1a",
-    fontSize: 40,
-    lineHeight: 65,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginTop: 10,
-    marginBottom: 10,
-  },
-
-  logo: {
-    height: 130,
-    width: 130,
-    marginRight: 12,
-  },
-
-  contenedorGaleria: {
-    marginBottom: 35,
-    marginTop: 35,
   },
 });
