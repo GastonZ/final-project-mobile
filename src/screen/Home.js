@@ -1,10 +1,13 @@
 import React from 'react'
-import { ScrollView, StyleSheet, Text, View , Dimensions} from 'react-native';
+import { ScrollView, StyleSheet, Text, View , Dimensions,Pressable} from 'react-native';
 const windowHeight = Dimensions.get('window').height;
 export default function Home() {
   
   return (
     <ScrollView style={styles.container}>
+    <Pressable
+          style={styles.ButtonDetails}
+        ></Pressable>
     </ScrollView>
   )
 }

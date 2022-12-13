@@ -8,12 +8,13 @@ import {
   Image,
   Pressable,
 } from "react-native";
-import { useState, useEffect } from "react";
+import CountUp from "react-native-countup";
+import { useState} from "react";
 import React from "react";
 
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
-export default function Details() {
+export default function Details(props) {
   const image = {
     uri: "https://tesla-cdn.thron.com/delivery/public/image/tesla/139918db-6847-409f-90dc-8031b835d6e2/bvlatuR/std/1200x628/Model-S-Homepage-Social-LHD",
   };
@@ -39,15 +40,24 @@ export default function Details() {
         </View>
         <View style={styles.containerDescription}>
           <View style={styles.carrusel2}>
-            <Text style={styles.description}> 272mi</Text>
+            <View style={styles.values}>
+              <CountUp initial={0} value={272} countBy={1} style={styles.description} />
+              <Text style={styles.description}>mi</Text>
+            </View>
             <Text style={styles.description2}> Range(EPA est.)</Text>
           </View>
           <View style={styles.carrusel2}>
-            <Text style={styles.description}> 140mph</Text>
+            <View style={styles.values}>
+              <CountUp initial={0} value={140} countBy={1} style={styles.description} />
+              <Text style={styles.description}>mph</Text>
+            </View>
             <Text style={styles.description2}> Top Speed</Text>
           </View>
           <View style={styles.carrusel2}>
-            <Text style={styles.description}> 5.8sec</Text>
+            <View style={styles.values}>
+              <CountUp initial={0} value={5.8} countBy={1} style={styles.description} />
+              <Text style={styles.description}>sec</Text>
+            </View>
             <Text style={styles.description2}>0-60 mph</Text>
           </View>
         </View>
@@ -240,9 +250,12 @@ export default function Details() {
           </Pressable>
         </View>
       </View>
-      <Pressable style={styles.ButtonOrder} /* onPress={entry} */>
-          <Text style={styles.textButton}>Order</Text>
-        </Pressable>
+      <Pressable
+        style={styles.ButtonOrder}
+        onPress={() => props.navigation.navigate("OrderCar")}
+      >
+        <Text style={styles.textButton}>Order</Text>
+      </Pressable>
     </ScrollView>
   );
 }
@@ -250,7 +263,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  textButton:{
+  values: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  textButton: {
     color: "white",
     fontWeight: "800",
   },
@@ -262,8 +279,8 @@ const styles = StyleSheet.create({
     width: 250,
     height: 40,
     borderRadius: 10,
-    alignSelf:"center",
-    marginBottom:20,
+    alignSelf: "center",
+    marginBottom: 20,
     textAlign: "center",
   },
   cardButton: {
@@ -300,14 +317,14 @@ const styles = StyleSheet.create({
     padding: 10,
     display: "flex",
     alignItems: "center",
-    marginBottom:20,
+    marginBottom: 20,
   },
   containerWheel: {
     height: windowHeight / 2,
     padding: 10,
     display: "flex",
     alignItems: "center",
-    marginBottom:20,
+    marginBottom: 20,
   },
   containerInside: {
     height: windowHeight / 1.8,
