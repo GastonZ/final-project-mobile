@@ -1,38 +1,13 @@
 import React from 'react'
-import { ScrollView, StyleSheet, Text, View , Dimensions} from 'react-native';
+import { ScrollView, StyleSheet, Text, View , Dimensions,Pressable} from 'react-native';
 const windowHeight = Dimensions.get('window').height;
 export default function Home() {
   
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.carrusel}>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      </View>
-      <View style={styles.carrusel2}>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      </View>
+    <Pressable
+          style={styles.ButtonDetails}
+        ></Pressable>
     </ScrollView>
   )
 }
