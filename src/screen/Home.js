@@ -5,34 +5,6 @@ export default function Home() {
   
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.carrusel}>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      <Text>carrusel</Text>
-      </View>
-      <View style={styles.carrusel2}>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      <Text>carrusel2</Text>
-      </View>
     </ScrollView>
   )
 }
