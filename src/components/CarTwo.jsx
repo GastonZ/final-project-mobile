@@ -1,10 +1,18 @@
-import { View, Text, StyleSheet, Dimensions, ImageBackground, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  ImageBackground,
+  ScrollView,
+  Pressable,
+} from "react-native";
 import React from "react";
-const windowHeight = Dimensions.get('window').height;
+const windowHeight = Dimensions.get("window").height;
 
 export default function CarOne() {
   const image = {
-    uri:  "https://m.media-amazon.com/images/I/91TQJKqraSL.png",
+    uri: "https://m.media-amazon.com/images/I/91TQJKqraSL.png",
   };
   return (
     <ScrollView>
@@ -12,10 +20,14 @@ export default function CarOne() {
         <View style={styles.container}>
           <Text style={styles.text}>
             <Text style={styles.decored}>[ </Text>
-            Model A
-            <Text style={styles.decored}> ]</Text>
+            Model A<Text style={styles.decored}> ]</Text>
           </Text>
           <Text style={styles.text5}>Mobile version</Text>
+          <View style={styles.ContainerButtonDetails}>
+            <Pressable style={styles.ButtonDetails}>
+              <Text style={styles.TextButtonDetails}>More Information</Text>
+            </Pressable>
+          </View>
         </View>
       </ImageBackground>
     </ScrollView>
@@ -25,8 +37,6 @@ export default function CarOne() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
     backgroundColor: "rgba(0,0,0,.550)",
     width: 420,
     height: windowHeight,
@@ -40,7 +50,8 @@ const styles = StyleSheet.create({
     color: "#eee",
     fontSize: 25,
     fontWeight: "bold",
-    textAlign: "left",
+    textAlign: "center",
+    marginTop: 40,
   },
 
   barSeparate: {
@@ -53,9 +64,32 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "light",
     margin: 4,
+    textAlign: "center",
   },
 
   decored: {
-    color: "#ff3648",
+    color: "#cef10a",
+  },
+  ButtonDetails: {
+    width: "50%",
+    height: 50,
+    backgroundColor: "#cef10a",
+    border: "none",
+    cursor: "pointer",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 20,
+  },
+  ContainerButtonDetails: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 40,
+  },
+  TextButtonDetails:{
+    color: 'white',
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });

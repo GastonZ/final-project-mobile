@@ -9,14 +9,13 @@ import {
   Text,
   Image,
   Dimensions,
+  Pressable,
 
 } from "react-native";
-import CarOne from "../components/CarOne";
+import CarOne from "../components/CarOne"; 
 import CarTwo from "../components/CarTwo";
 import CarThree from "../components/CarThree";
-import CarFour from "../components/CarFour"
-import React from 'react'
-import { ScrollView, StyleSheet, Text, View , Dimensions,Pressable} from 'react-native';
+import CarFour from "../components/CarFour";
 const windowHeight = Dimensions.get('window').height;
 
 export default function Home() {
@@ -25,7 +24,7 @@ export default function Home() {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
         <View style={styles.container}>
           <Text style={styles.text}>
@@ -34,16 +33,18 @@ export default function Home() {
             <Text style={styles.decored}> ]</Text>
           </Text>
           <Text style={styles.text5}>Mobile version</Text>
+          <View style={styles.ContainerButtonDetails}>
+        <Pressable
+          style={styles.ButtonDetails}
+        ><Text style={styles.TextButtonDetails} >More Information</Text></Pressable>
+        </View>
         </View>
       </ImageBackground>
       <CarOne></CarOne>
       <CarTwo></CarTwo>
       <CarThree></CarThree>
       <CarFour></CarFour>
-    <ScrollView style={styles.container}>
-    <Pressable
-          style={styles.ButtonDetails}
-        ></Pressable>
+
     </ScrollView>
   );
 }
@@ -51,11 +52,10 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
     backgroundColor: "rgba(0,0,0,.550)",
     width: 420,
     height: windowHeight,
+    textAlign: 'center',
   },
   image: {
     flex: 1,
@@ -66,7 +66,8 @@ const styles = StyleSheet.create({
     color: "#eee",
     fontSize: 25,
     fontWeight: "bold",
-    textAlign: "left",
+    textAlign: "center",
+    marginTop: 40,
   },
 
   barSeparate: {
@@ -79,10 +80,11 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "light",
     margin: 4,
+    textAlign: 'center',
   },
 
   decored: {
-    color: "#ff3648",
+    color: "#cef10a",
   },
 
   secondarytexthome: {
@@ -104,5 +106,28 @@ const styles = StyleSheet.create({
   contenedorGaleria: {
     marginBottom: 35,
     marginTop: 35,
+  },
+  ButtonDetails: {
+    width: "50%",
+    height: 50,
+    backgroundColor: "#cef10a",
+    border: "none",
+    cursor: "pointer",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 20,
+  },
+  
+  ContainerButtonDetails: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 40,
+  },
+  TextButtonDetails:{
+    color: 'white',
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });
