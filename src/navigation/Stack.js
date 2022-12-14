@@ -4,6 +4,9 @@ import React from 'react'
 import Home from '../screen/Home'
 import Details from '../screen/Details';
 import OrderCar from '../screen/OrderCar';
+import SignUp from '../screen/SignUp';
+import SignIn from '../screen/SignIn'
+
 const StackNav = createNativeStackNavigator()
 export default function Stack() {
   return (
@@ -11,6 +14,8 @@ export default function Stack() {
         <StackNav.Screen name= "Home" component={Home}/>
         <StackNav.Screen name= "Details" component={Details}/>
         <StackNav.Screen name="OrderCar" component={OrderCar}/>
+        <StackNav.Screen name="SignUp" component={SignUp}/>
+        <StackNav.Screen name="SignIn" component={SignIn}/>
     </StackNav.Navigator>
   )
 }
