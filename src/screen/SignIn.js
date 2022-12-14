@@ -23,7 +23,7 @@ export default function OrderCar() {
                         </View>
                         <View>
                             <Text style={styles.segundoTexto} ><Text style={styles.lineOrange}>|</Text> Still don't have an account?</Text>
-                            <Button title='Sign up quickly' color='#24262B'></Button>
+                            <Button title='Sign up quickly!' color='#24262B'></Button>
                         </View>
                     </View>
                 </View>
