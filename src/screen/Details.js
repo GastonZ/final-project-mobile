@@ -252,7 +252,7 @@ export default function Details(props) {
       </View>
       <Pressable
         style={styles.ButtonOrder}
-        onPress={() => props.navigation.navigate("OrderCar")}
+        onPress={() => props.navigation.navigate("Order")}
       >
         <Text style={styles.textButton}>Order</Text>
       </Pressable>
