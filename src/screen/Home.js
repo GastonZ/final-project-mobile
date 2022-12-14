@@ -110,13 +110,13 @@ const styles = StyleSheet.create({
   ButtonDetails: {
     width: "50%",
     height: 50,
-    backgroundColor: "#cef10a",
+    backgroundColor: "#24262B",
     border: "none",
     cursor: "pointer",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 20,
+    borderRadius: 6,
   },
   
   ContainerButtonDetails: {
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   },
   TextButtonDetails:{
     color: 'white',
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: "bold",
   },
 });
