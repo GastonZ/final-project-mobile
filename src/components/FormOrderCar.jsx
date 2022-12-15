@@ -59,11 +59,11 @@ const styles = StyleSheet.create({
         textAlign: "center",
       },
     lineTitleText:{
-        color: "#black",
+      color:"white",
         fontSize: 24,
     },
     titleTextImput:{
-        color: "black",
+      color:"white",
         padding: 10,
         fontSize: 20,
         fontWeight: "bold",
@@ -79,13 +79,14 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
       },
     containerForm:{
-    height:windowHeight,
+    height:windowHeight/1.6,
     display:"flex",
     alignItems:"center",
     },
     titleForm:{
         fontWeight:"700",
         fontSize: 25,
+        color:"white"
     }
   });
   
