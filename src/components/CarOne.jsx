@@ -1,34 +1,18 @@
+import { View, Text, StyleSheet, Dimensions, ImageBackground, ScrollView, Pressable } from "react-native";
 import React from "react";
-import {
-  ImageBackground,
-  ScrollView,
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  Dimensions,
-  Pressable,
-
-} from "react-native";
-import CarOne from "../components/CarOne"; 
-import CarTwo from "../components/CarTwo";
-import CarThree from "../components/CarThree";
-import CarFour from "../components/CarFour";
 const windowHeight = Dimensions.get('window').height;
-const windowWidth = Dimensions.get("window").width;
 
-export default function Home() {
+export default function CarOne() {
   const image = {
-    uri: "https://i.pinimg.com/originals/7e/21/48/7e2148953987ce74723756b779932271.jpg",
+    uri: "https://i.pinimg.com/originals/46/64/b8/4664b84c57b05f6312595048957f1f53.png",
   };
-
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
         <View style={styles.container}>
           <Text style={styles.text}>
             <Text style={styles.decored}>[ </Text>
-            Model S
+            Model 3
             <Text style={styles.decored}> ]</Text>
           </Text>
           <Text style={styles.text5}>Mobile version</Text>
@@ -39,10 +23,6 @@ export default function Home() {
         </View>
         </View>
       </ImageBackground>
-      <CarOne></CarOne>
-      <CarTwo></CarTwo>
-      <CarThree></CarThree>
-      <CarFour></CarFour>
     </ScrollView>
   );
 }
@@ -53,7 +33,6 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,.550)",
     width: 420,
     height: windowHeight,
-    textAlign: 'center',
   },
   image: {
     flex: 1,
@@ -84,39 +63,17 @@ const styles = StyleSheet.create({
   decored: {
     color: "#cef10a",
   },
-
-  secondarytexthome: {
-    color: "#1a1a1a",
-    fontSize: 40,
-    lineHeight: 65,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginTop: 10,
-    marginBottom: 10,
-  },
-
-  logo: {
-    height: 130,
-    width: 130,
-    marginRight: 12,
-  },
-
-  contenedorGaleria: {
-    marginBottom: 35,
-    marginTop: 35,
-  },
   ButtonDetails: {
     width: "50%",
     height: 50,
-    backgroundColor: "#24262B",
+    backgroundColor: "#cef10a",
     border: "none",
     cursor: "pointer",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 6,
+    borderRadius: 20,
   },
-  
   ContainerButtonDetails: {
     display: "flex",
     justifyContent: "center",
@@ -125,7 +82,7 @@ const styles = StyleSheet.create({
   },
   TextButtonDetails:{
     color: 'white',
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: "bold",
   },
 });
