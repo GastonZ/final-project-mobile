@@ -2,7 +2,8 @@ import { View, Text, StyleSheet, Dimensions, ImageBackground, ScrollView, Pressa
 import React from "react";
 const windowHeight = Dimensions.get('window').height;
 
-export default function CarOne() {
+export default function CarOne(props) {
+  const {x} = props
   const image = {
     uri: "https://i.pinimg.com/originals/46/64/b8/4664b84c57b05f6312595048957f1f53.png",
   };
@@ -12,7 +13,7 @@ export default function CarOne() {
         <View style={styles.container}>
           <Text style={styles.text}>
             <Text style={styles.decored}>[ </Text>
-            Model 3
+            {x.title}
             <Text style={styles.decored}> ]</Text>
           </Text>
           <Text style={styles.text5}>Mobile version</Text>

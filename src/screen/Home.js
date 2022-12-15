@@ -1,4 +1,8 @@
 import React from "react";
+import carsActions from '../../redux/actions/carsActions'
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import {
   ImageBackground,
   ScrollView,
@@ -10,10 +14,7 @@ import {
   Pressable,
 
 } from "react-native";
-import CarOne from "../components/CarOne"; 
-import CarTwo from "../components/CarTwo";
-import CarThree from "../components/CarThree";
-import CarFour from "../components/CarFour";
+import CarOne from "../components/CarOne";
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get("window").width;
 
@@ -22,27 +23,23 @@ export default function Home() {
     uri: "https://i.pinimg.com/originals/7e/21/48/7e2148953987ce74723756b779932271.jpg",
   };
 
+  let { getCars } = carsActions
+
+  let dispatch = useDispatch()
+
+  const cars = useSelector((store) => store.cars)
+
+  useEffect(() => {
+    dispatch(getCars())
+
+  }, [])
+
+  console.log(cars);
+
   return (
     <ScrollView style={styles.container}>
-      <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-        <View style={styles.container}>
-          <Text style={styles.text}>
-            <Text style={styles.decored}>[ </Text>
-            Model S
-            <Text style={styles.decored}> ]</Text>
-          </Text>
-          <Text style={styles.text5}>Mobile version</Text>
-          <View style={styles.ContainerButtonDetails}>
-        <Pressable
-          style={styles.ButtonDetails}
-        ><Text style={styles.TextButtonDetails} >More Information</Text></Pressable>
-        </View>
-        </View>
-      </ImageBackground>
-      <CarOne></CarOne>
-      <CarTwo></CarTwo>
-      <CarThree></CarThree>
-      <CarFour></CarFour>
+      {cars.map((x) => { return (<CarOne props={x} ></CarOne>)
+    })}
     </ScrollView>
   );
 }
@@ -116,14 +113,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 6,
   },
-  
+
   ContainerButtonDetails: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     marginTop: 40,
   },
-  TextButtonDetails:{
+  TextButtonDetails: {
     color: 'white',
     fontSize: 16,
     fontWeight: "bold",
