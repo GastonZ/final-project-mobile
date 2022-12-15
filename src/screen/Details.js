@@ -11,22 +11,14 @@ import {
 import CountUp from "react-native-countup";
 import { useState} from "react";
 import React from "react";
-
+import FormOrderCar from "../components/FormOrderCar";
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 export default function Details(props) {
   const image = {
     uri: "https://tesla-cdn.thron.com/delivery/public/image/tesla/139918db-6847-409f-90dc-8031b835d6e2/bvlatuR/std/1200x628/Model-S-Homepage-Social-LHD",
   };
-  let [color, setColor] = useState({
-    uri: "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MT322,$PPSW,$W40B,$IBW1&view=SIDE&model=m3&size=1920&bkba_opt=1&crop=1300,450,300,300&version=v0121-b89c9f40d202212090814",
-  });
-  let [wheel, setWheel] = useState({
-    uri: "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MT322,$PPMR,$W40B,$IBW1&view=STUD_RIMCLOSEUP&model=m3&size=1920&bkba_opt=1&crop=0,950,160,0&version=v0121-b89c9f40d202212090814",
-  });
-  let [inside, setInside] = useState({
-    uri: "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$IBB1,$PPMR,$MT322&view=STUD_INTERIOR&model=m3&size=1441&bkba_opt=1&crop=0,0,0,0&version=v0121-b89c9f40d202212090814",
-  });
+  const image2 = { uri: "https://tesla-cdn.thron.com/delivery/public/image/tesla/139918db-6847-409f-90dc-8031b835d6e2/bvlatuR/std/1200x628/Model-S-Homepage-Social-LHD" };
 
   return (
     <ScrollView style={styles.container}>
@@ -63,7 +55,7 @@ export default function Details(props) {
         </View>
       </ImageBackground>
       <View style={styles.containerDescription2}>
-        <View>
+        <View style={styles.containerFirstDescription}>
           <Text style={styles.subtitle}> Powerful Efficiency </Text>
           <Text style={styles.text1}>
             Tesla designed Model 3 from the ground-up as an electric vehicle
@@ -73,195 +65,42 @@ export default function Details(props) {
             unbelievably powerful vehicles ever built. *With first foot of
             rollout subtracted.
           </Text>
+          <Image
+              style={styles.cardImg}
+              source={image2}
+            />
         </View>
-        <View>
+        <View style={styles.containerFirstDescription}>
           <Text style={styles.subtitle}> Very Cold Weather</Text>
           <Text style={styles.text1}>
             For the best long range driving experience in the coldest driving
             conditions, we recommend a Long Range or Performance Model 3.
           </Text>
+          <Image
+              style={styles.cardImg}
+              source={image2}
+            />
         </View>
       </View>
-      <View style={styles.containerColor}>
-        <Image
-          style={styles.cardImgColor}
-          source={{
-            uri: color.uri,
-          }}
-        />
-        <Text style={styles.subtitle}> Paint </Text>
-        <View style={styles.colors}>
-          <Pressable
-            style={styles.buttonColor}
-            onPress={() =>
-              setColor({
-                uri: "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MT322,$PPSW,$W40B,$IBW1&view=SIDE&model=m3&size=1920&bkba_opt=1&crop=1300,450,300,300&version=v0121-b89c9f40d202212090814",
-              })
-            }
-          >
-            <Image
-              style={styles.cardButton}
-              source={{
-                uri: "https://digitalassets.tesla.com/image/upload/f_auto,q_auto/prod/coin/static_assets/MODEL3/UI/Paint_White.png?version=v0121-b89c9f40d202212090814",
-              }}
-            />
-          </Pressable>
-          <Pressable
-            style={styles.buttonColor}
-            onPress={() =>
-              setColor({
-                uri: "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MT322,$PMNG,$W40B,$IBW1&view=SIDE&model=m3&size=1920&bkba_opt=1&crop=1300,450,300,300&version=v0121-b89c9f40d202212090814",
-              })
-            }
-          >
-            <Image
-              style={styles.cardButton}
-              source={{
-                uri: "https://digitalassets.tesla.com/image/upload/f_auto,q_auto/prod/coin/static_assets/MODEL3/UI/Paint_MidnightSilver.png?version=v0121-b89c9f40d202212090814",
-              }}
-            />
-          </Pressable>
-          <Pressable
-            style={styles.buttonColor}
-            onPress={() =>
-              setColor({
-                uri: "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MT322,$PPSB,$W40B,$IBW1&view=SIDE&model=m3&size=1920&bkba_opt=1&crop=1300,450,300,300&version=v0121-b89c9f40d202212090814",
-              })
-            }
-          >
-            <Image
-              style={styles.cardButton}
-              source={{
-                uri: "https://digitalassets.tesla.com/image/upload/f_auto,q_auto/prod/coin/static_assets/MODEL3/UI/Paint_Blue.png?version=v0121-b89c9f40d202212090814",
-              }}
-            />
-          </Pressable>
-          <Pressable
-            style={styles.buttonColor}
-            onPress={() =>
-              setColor({
-                uri: "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MT322,$PBSB,$W40B,$IBW1&view=SIDE&model=m3&size=1920&bkba_opt=1&crop=1300,450,300,300&version=v0121-b89c9f40d202212090814",
-              })
-            }
-          >
-            <Image
-              style={styles.cardButton}
-              source={{
-                uri: "https://digitalassets.tesla.com/image/upload/f_auto,q_auto/prod/coin/static_assets/MODEL3/UI/Paint_Black.png?version=v0121-b89c9f40d202212090814",
-              }}
-            />
-          </Pressable>
-          <Pressable
-            style={styles.buttonColor}
-            onPress={() =>
-              setColor({
-                uri: "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MT322,$PPMR,$W40B,$IBW1&view=SIDE&model=m3&size=1920&bkba_opt=1&crop=1300,450,300,300&version=v0121-b89c9f40d202212090814",
-              })
-            }
-          >
-            <Image
-              style={styles.cardButton}
-              source={{
-                uri: "https://digitalassets.tesla.com/image/upload/f_auto,q_auto/prod/coin/static_assets/MODEL3/UI/Paint_Red.png?version=v0121-b89c9f40d202212090814",
-              }}
-            />
-          </Pressable>
-        </View>
-      </View>
-      <View style={styles.containerWheel}>
-        <Image
-          style={styles.cardImgwheel}
-          source={{
-            uri: wheel.uri,
-          }}
-        />
-        <Text style={styles.subtitle}> Wheel </Text>
-        <View style={styles.colors}>
-          <Pressable
-            style={styles.buttonColor}
-            onPress={() =>
-              setWheel({
-                uri: "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MT322,$PPMR,$W40B,$IBW1&view=STUD_RIMCLOSEUP&model=m3&size=1920&bkba_opt=1&crop=0,950,160,0&version=v0121-b89c9f40d202212090814",
-              })
-            }
-          >
-            <Image
-              style={styles.cardButton}
-              source={{
-                uri: "https://digitalassets.tesla.com/image/upload/f_auto,q_auto/prod/coin/static_assets/MODEL3/UI/option-wheels-18-aero.png?version=v0121-b89c9f40d202212090814",
-              }}
-            />
-          </Pressable>
-          <Pressable
-            style={styles.buttonColor}
-            onPress={() =>
-              setWheel({
-                uri: "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MT322,$PPMR,$W41B,$IBW1&view=STUD_RIMCLOSEUP&model=m3&size=1920&bkba_opt=1&crop=0,950,160,0&version=v0121-b89c9f40d202212090814",
-              })
-            }
-          >
-            <Image
-              style={styles.cardButton}
-              source={{
-                uri: "https://digitalassets.tesla.com/image/upload/f_auto,q_auto/prod/coin/static_assets/MODEL3/UI/option-wheels-19-sport.png?version=v0121-b89c9f40d202212090814",
-              }}
-            />
-          </Pressable>
-        </View>
-      </View>
-      <View style={styles.containerInside}>
-        <Image
-          style={styles.cardImgInside}
-          source={{
-            uri: inside.uri,
-          }}
-        />
-        <Text style={styles.subtitle}> Inside </Text>
-        <View style={styles.colors}>
-          <Pressable
-            style={styles.buttonColor}
-            onPress={() =>
-              setInside({
-                uri: "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$IBB1,$PPMR,$MT322&view=STUD_INTERIOR&model=m3&size=1441&bkba_opt=1&crop=0,0,0,0&version=v0121-b89c9f40d202212090814",
-              })
-            }
-          >
-            <Image
-              style={styles.cardButton}
-              source={{
-                uri: "https://digitalassets.tesla.com/image/upload/f_auto,q_auto/prod/coin/static_assets/MODEL3/UI/Interior_Black.png?version=v0121-b89c9f40d202212090814",
-              }}
-            />
-          </Pressable>
-          <Pressable
-            style={styles.buttonColor}
-            onPress={() =>
-              setInside({
-                uri: "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$IBW1,$PPMR,$MT322&view=STUD_INTERIOR&model=m3&size=1441&bkba_opt=1&crop=0,0,0,0&version=v0121-b89c9f40d202212090814",
-              })
-            }
-          >
-            <Image
-              style={styles.cardButton}
-              source={{
-                uri: "https://digitalassets.tesla.com/image/upload/f_auto,q_auto/prod/coin/static_assets/MODEL3/UI/Interior_White.png?version=v0121-b89c9f40d202212090814",
-              }}
-            />
-          </Pressable>
-        </View>
-      </View>
-      <Pressable
+      <FormOrderCar/>
+{/*       <Pressable
         style={styles.ButtonOrder}
-        onPress={() => props.navigation.navigate("OrderCar")}
+        onPress={() => props.navigation.navigate("Order")}
       >
         <Text style={styles.textButton}>Order</Text>
-      </Pressable>
+      </Pressable> */}
     </ScrollView>
   );
 }
 const styles = StyleSheet.create({
+  cardImg:{
+    marginTop:10,
+    width:windowWidth-15,
+    height:300,
+  },
   container: {
     flex: 1,
+    backgroundColor:"black"
   },
   values: {
     display: "flex",
@@ -334,16 +173,18 @@ const styles = StyleSheet.create({
   },
   containerDescription2: {
     padding: 10,
-    height: windowHeight / 2.2,
-    display: "flex",
-    justifyContent: "space-around",
+ /*     height: windowHeight,  */
+/*     display: "flex",
+    justifyContent: "space-around", */
   },
   text1: {
     marginLeft: 5,
+    color:"white"
   },
   subtitle: {
     fontSize: 20,
     fontWeight: "400",
+    color:"white"
   },
   carrusel: {
     flex: 1,
@@ -375,4 +216,8 @@ const styles = StyleSheet.create({
   description2: {
     fontWeight: "400",
   },
+  containerFirstDescription:{
+    marginTop:20,
+    height:windowHeight/1.5,
+  }
 });

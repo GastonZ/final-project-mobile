@@ -1,6 +1,4 @@
-
 import React from "react";
-
 import {
   ImageBackground,
   ScrollView,
@@ -17,6 +15,7 @@ import CarTwo from "../components/CarTwo";
 import CarThree from "../components/CarThree";
 import CarFour from "../components/CarFour";
 const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get("window").width;
 
 export default function Home() {
   const image = {
@@ -44,7 +43,6 @@ export default function Home() {
       <CarTwo></CarTwo>
       <CarThree></CarThree>
       <CarFour></CarFour>
-
     </ScrollView>
   );
 }
