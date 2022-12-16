@@ -1,8 +1,10 @@
 import React from "react";
-import carsActions from '../../redux/actions/carsActions'
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import carsActions from "../../redux/actions/carsActions";
+import axios from 'axios'
+import { BASE_URL } from "../api/url";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import {
   ImageBackground,
   ScrollView,
@@ -12,34 +14,37 @@ import {
   Image,
   Dimensions,
   Pressable,
-
 } from "react-native";
 import CarOne from "../components/CarOne";
-const windowHeight = Dimensions.get('window').height;
+const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
+import cars from '../../assets/Data/cars'
 
-export default function Home() {
+export default function Home(props) {
   const image = {
     uri: "https://i.pinimg.com/originals/7e/21/48/7e2148953987ce74723756b779932271.jpg",
   };
 
-  let { getCars } = carsActions
+/*   let { getCars } = carsActions
 
   let dispatch = useDispatch()
 
-  const cars = useSelector((store) => store.cars)
-
-  useEffect(() => {
+  const { cars } = useSelector((state)=> state.cars)
+  
+  useEffect(()=>{
     dispatch(getCars())
-
-  }, [])
-
-  console.log(cars);
-
+    
+  },[])
+  const res = axios.get(
+    `http://localhost:8000/api/cars`
+)
+console.log(res); */
+console.log(cars);
   return (
     <ScrollView style={styles.container}>
-      {cars.map((x) => { return (<CarOne props={x} ></CarOne>)
-    })}
+      {cars.map((car) => {
+        return <CarOne car={car} navigation={props.navigation}></CarOne>;
+      })}
     </ScrollView>
   );
 }
@@ -50,7 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,.550)",
     width: 420,
     height: windowHeight,
-    textAlign: 'center',
+    textAlign: "center",
   },
   image: {
     flex: 1,
@@ -75,7 +80,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "light",
     margin: 4,
-    textAlign: 'center',
+    textAlign: "center",
   },
 
   decored: {
@@ -121,7 +126,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   TextButtonDetails: {
-    color: 'white',
+    color: "white",
     fontSize: 16,
     fontWeight: "bold",
   },

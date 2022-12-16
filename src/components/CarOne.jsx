@@ -3,23 +3,20 @@ import React from "react";
 const windowHeight = Dimensions.get('window').height;
 
 export default function CarOne(props) {
-  const {x} = props
-  const image = {
-    uri: "https://i.pinimg.com/originals/46/64/b8/4664b84c57b05f6312595048957f1f53.png",
-  };
+  const {car} = props
   return (
     <ScrollView>
-      <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+      <ImageBackground source={{uri:car.image}} resizeMode="cover" style={styles.image}>
         <View style={styles.container}>
           <Text style={styles.text}>
             <Text style={styles.decored}>[ </Text>
-            {x.title}
+            {car.title}
             <Text style={styles.decored}> ]</Text>
           </Text>
-          <Text style={styles.text5}>Mobile version</Text>
           <View style={styles.ContainerButtonDetails}>
         <Pressable
           style={styles.ButtonDetails}
+          onPress={() => props.navigation.navigate('Details', car)}
         ><Text style={styles.TextButtonDetails} >More Information</Text></Pressable>
         </View>
         </View>
@@ -30,22 +27,24 @@ export default function CarOne(props) {
 
 const styles = StyleSheet.create({
   container: {
+    display:"flex",
     flex: 1,
     backgroundColor: "rgba(0,0,0,.550)",
     width: 420,
+    justifyContent:"space-between",
     height: windowHeight,
   },
   image: {
     flex: 1,
     justifyContent: "center",
-    height: 710,
+    height: 500,
   },
   text: {
     color: "#eee",
     fontSize: 25,
     fontWeight: "bold",
     textAlign: "center",
-    marginTop: 40,
+    marginTop:20,
   },
 
   barSeparate: {
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 40,
+    marginBottom:20,
   },
   TextButtonDetails:{
     color: 'white',

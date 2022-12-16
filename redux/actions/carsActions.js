@@ -6,9 +6,8 @@ import { BASE_URL } from '../../src/api/url'
 const getCars = createAsyncThunk('getCars', async () => {
     try {
         const res = await axios.get(
-            `${BASE_URL}cars/`
+            `${BASE_URL}cars`
         )
-        console.log(res);
         return {
             cars : res.data.response
         }
