@@ -19,16 +19,19 @@ export default function Details(props) {
     uri: "https://tesla-cdn.thron.com/delivery/public/image/tesla/139918db-6847-409f-90dc-8031b835d6e2/bvlatuR/std/1200x628/Model-S-Homepage-Social-LHD",
   };
   const image2 = { uri: "https://tesla-cdn.thron.com/delivery/public/image/tesla/139918db-6847-409f-90dc-8031b835d6e2/bvlatuR/std/1200x628/Model-S-Homepage-Social-LHD" };
-
+  const {car} =props
+  console.log(car); 
   return (
     <ScrollView style={styles.container}>
       <ImageBackground
-        source={image}
+        source={{uri:"https://fotos.perfil.com/2019/03/07/bugatti-la-voiture-noire-647006.jpg"}}
         resizeMode="cover"
         style={styles.imagefondo}
       >
         <View style={styles.carrusel}>
-          <Text style={styles.titulo1}>Model 3</Text>
+        <Text style={styles.decored}> [</Text>
+          <Text style={styles.titulo1}> Model S</Text>
+          <Text style={styles.decored}> ]</Text>
         </View>
         <View style={styles.containerDescription}>
           <View style={styles.carrusel2}>
@@ -56,6 +59,7 @@ export default function Details(props) {
       </ImageBackground>
       <View style={styles.containerDescription2}>
         <View style={styles.containerFirstDescription}>
+          <View>
           <Text style={styles.subtitle}> Powerful Efficiency </Text>
           <Text style={styles.text1}>
             Tesla designed Model 3 from the ground-up as an electric vehicle
@@ -65,21 +69,24 @@ export default function Details(props) {
             unbelievably powerful vehicles ever built. *With first foot of
             rollout subtracted.
           </Text>
+          </View>
           <Image
               style={styles.cardImg}
-              source={image2}
+              source={{uri:"https://sm.pcmag.com/pcmag_me/news/t/toyota-rol/toyota-rolls-out-next-gen-plug-in-prius_jfcv.jpg"}}
             />
         </View>
         <View style={styles.containerFirstDescription}>
+          <Image
+              style={styles.cardImg2}
+              source={{uri:"https://www.motorbiscuit.com/wp-content/uploads/2021/09/GettyImages-1339287127-1024x683.jpg"}}
+            />
+                      <View>
           <Text style={styles.subtitle}> Very Cold Weather</Text>
           <Text style={styles.text1}>
             For the best long range driving experience in the coldest driving
             conditions, we recommend a Long Range or Performance Model 3.
           </Text>
-          <Image
-              style={styles.cardImg}
-              source={image2}
-            />
+          </View>
         </View>
       </View>
       <FormOrderCar/>
@@ -93,10 +100,25 @@ export default function Details(props) {
   );
 }
 const styles = StyleSheet.create({
-  cardImg:{
+  decored: {
+    color: "#cef10a",
+    fontSize: 40,
+    fontWeight: "800",
+    marginTop: 30,
+  },
+  cardImg2:{
+    marginRight:10,
     marginTop:10,
-    width:windowWidth-15,
-    height:300,
+    width:200,
+    height:170,
+    borderRadius:10,
+  },
+  cardImg:{
+    marginLeft:20,
+    marginTop:30,
+    width:200,
+    height:250,
+    borderRadius:10,
   },
   container: {
     flex: 1,
@@ -179,7 +201,8 @@ const styles = StyleSheet.create({
   },
   text1: {
     marginLeft: 5,
-    color:"white"
+    color:"white",
+    width:windowWidth/2.8,
   },
   subtitle: {
     fontSize: 20,
@@ -190,21 +213,25 @@ const styles = StyleSheet.create({
     flex: 1,
     width: windowWidth,
     display: "flex",
-    justifyContent: "flex-start",
-    alignItems: "center",
+    flexDirection:"row",
+    alignItems: "flex-start",
+    justifyContent: "center", 
     flexGrow: 1,
   },
   imagefondo: {
     width: windowWidth,
-    height: windowHeight,
+     height: windowHeight/2,
+     display:"flex",
+     justifyContent:"space-between",
   },
   titulo1: {
-    marginTop: 60,
+    marginTop: 30,
     fontSize: 40,
     fontWeight: "800",
+    color:"white",
   },
   containerDescription: {
-    height: windowHeight / 5,
+    height: windowHeight / 10,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
@@ -212,12 +239,17 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 20,
     fontWeight: "800",
+    color:"white",
   },
   description2: {
     fontWeight: "400",
   },
   containerFirstDescription:{
+    display:"flex",
+    flexDirection:'row',
+    flexWrap:"wrap",
     marginTop:20,
-    height:windowHeight/1.5,
+    width:windowWidth-10,
+    height:windowHeight/2.1,
   }
 });
