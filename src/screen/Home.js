@@ -50,6 +50,7 @@ console.log(cars);
 }
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
     backgroundColor: "rgba(0,0,0,.550)",
