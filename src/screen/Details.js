@@ -30,7 +30,7 @@ export default function Details(props) {
       >
         <View style={styles.carrusel}>
         <Text style={styles.decored}> [</Text>
-          <Text style={styles.titulo1}> Model S</Text>
+          <Text style={styles.titulo1}> Model S </Text>
           <Text style={styles.decored}> ]</Text>
         </View>
         <View style={styles.containerDescription}>
