@@ -1,61 +1,41 @@
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import React from "react";
-
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import itemsActions from "../../redux/actions/itemsActions";
+import axios from "axios";
+import { BASE_URL } from "../api/url";
 export default function CardArticle() {
+  let { getItems } = itemsActions;
+
+  let dispatch = useDispatch();
+
+  const {items} = useSelector((state) => state.items);
+
+  useEffect(() => {
+    dispatch(getItems());
+  }, []);
+  console.log(items);
   return (
     <>
-      <View style={styles.cardBestSeller09}>
-        <Image
-          source={{
-            uri: "https://media.discordapp.net/attachments/1019730194984091739/1051979270991392859/image.png?width=1440&height=668",
-          }}
-          resizeMode="cover"
-          style={styles.imagefondo}
-        ></Image>
-        <Text>Men's Apparel</Text>
-        <Pressable style={styles.buttonshop09}>
-          <Text style={styles.textButton}>Shop Now</Text>
-        </Pressable>
-      </View>
-      <View style={styles.cardBestSeller09}>
-        <Image
-          source={{
-            uri: "https://media.discordapp.net/attachments/1019730194984091739/1051979772714024970/image.png?width=1425&height=671",
-          }}
-          resizeMode="cover"
-          style={styles.imagefondo}
-        ></Image>
-        <Text>Women's Apparel</Text>
-        <Pressable style={styles.buttonshop09}>
-          <Text style={styles.textButton}>Shop Now</Text>
-        </Pressable>
-      </View>
-      <View style={styles.cardBestSeller09}>
-        <Image
-          source={{
-            uri: "https://media.discordapp.net/attachments/1019730194984091739/1051980429479137350/image.png?width=1440&height=625",
-          }}
-          resizeMode="cover"
-          style={styles.imagefondo}
-        ></Image>
-        <Text>Kid's Apparel</Text>
-        <Pressable style={styles.buttonshop09}>
-          <Text style={styles.textButton}>Shop Now</Text>
-        </Pressable>
-      </View>
-      <View style={styles.cardBestSeller09}>
-        <Image
-          source={{
-            uri: "https://media.discordapp.net/attachments/1019730194984091739/1051986508472651878/Sin_titulo-1.png?width=583&height=671",
-          }}
-          resizeMode="cover"
-          style={styles.imagefondo}
-        ></Image>
-        <Text>Accesories</Text>
-        <Pressable style={styles.buttonshop09}>
-          <Text style={styles.textButton}>Shop Now</Text>
-        </Pressable>
-      </View>
+       {items.map((item) => {
+        return (
+          <View style={styles.cardBestSeller09}>
+            <Image
+              source={{
+                uri: item.image,
+              }}
+              resizeMode="cover"
+              style={styles.imagefondo}
+            ></Image>
+            <Text>{item.name}</Text>
+            <Pressable style={styles.buttonshop09}>
+              <Text style={styles.textButton}>Shop Now</Text>
+            </Pressable>
+          </View>
+        )
+      })}
     </>
   );
 }

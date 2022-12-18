@@ -19,38 +19,37 @@ export default function Details(props) {
     uri: "https://tesla-cdn.thron.com/delivery/public/image/tesla/139918db-6847-409f-90dc-8031b835d6e2/bvlatuR/std/1200x628/Model-S-Homepage-Social-LHD",
   };
   const image2 = { uri: "https://tesla-cdn.thron.com/delivery/public/image/tesla/139918db-6847-409f-90dc-8031b835d6e2/bvlatuR/std/1200x628/Model-S-Homepage-Social-LHD" };
-  const {car} =props
-  console.log(car); 
+   const car =props.route.params
   return (
     <ScrollView style={styles.container}>
       <ImageBackground
-        source={{uri:"https://fotos.perfil.com/2019/03/07/bugatti-la-voiture-noire-647006.jpg"}}
+        source={{uri: car.imageDetails}}
         resizeMode="cover"
         style={styles.imagefondo}
       >
         <View style={styles.carrusel}>
         <Text style={styles.decored}> [</Text>
-          <Text style={styles.titulo1}> Model S </Text>
+          <Text style={styles.titulo1}> {car.title} </Text>
           <Text style={styles.decored}> ]</Text>
-        </View>
+        </View> 
         <View style={styles.containerDescription}>
           <View style={styles.carrusel2}>
             <View style={styles.values}>
-              <CountUp initial={0} value={272} countBy={1} style={styles.description} />
+              <CountUp initial={0} value={car.peakPower} countBy={1} style={styles.description} />
               <Text style={styles.description}>mi</Text>
             </View>
             <Text style={styles.description2}> Range(EPA est.)</Text>
           </View>
           <View style={styles.carrusel2}>
             <View style={styles.values}>
-              <CountUp initial={0} value={140} countBy={1} style={styles.description} />
+              <CountUp initial={0} value={car.milesPerSec} countBy={1} style={styles.description} />
               <Text style={styles.description}>mph</Text>
             </View>
             <Text style={styles.description2}> Top Speed</Text>
           </View>
           <View style={styles.carrusel2}>
             <View style={styles.values}>
-              <CountUp initial={0} value={5.8} countBy={1} style={styles.description} />
+              <Text style={styles.description}>{car.acceleration.slice(0,3)}</Text>
               <Text style={styles.description}>sec</Text>
             </View>
             <Text style={styles.description2}>0-60 mph</Text>
