@@ -7,6 +7,7 @@ import SignIn from '../screen/SignIn'
 import Shop from '../screen/Shop'
 import DetailsArticle from "../screen/DetailsArticle";
 import Profile from "../screen/Profile";
+import Cart from "../screen/Cart";
 const DrawerNav = createDrawerNavigator();
 
 export default function Drawer() {
@@ -19,6 +20,7 @@ export default function Drawer() {
         <DrawerNav.Screen name="SignUp" component={SignUp}/>
         <DrawerNav.Screen name="SignIn" component={SignIn}/>
         <DrawerNav.Screen name="Profile" component={Profile}/>
+        <DrawerNav.Screen name="Cart" component={Cart}/>
     </DrawerNav.Navigator>
   )
 }
