@@ -7,6 +7,7 @@ import SignUp from '../screen/SignUp';
 import SignIn from '../screen/SignIn'
 import Shop from '../screen/Shop'
 import DetailsArticle from '../screen/DetailsArticle';
+import Profile from '../screen/Profile';
 
 
 const StackNav = createNativeStackNavigator()
@@ -19,6 +20,7 @@ export default function Stack() {
         <StackNav.Screen name="SignUp" component={SignUp}/>
         <StackNav.Screen name="SignIn" component={SignIn}/>
         <StackNav.Screen name="Shop" component={Shop}/>
+        <StackNav.Screen name="Profile" component={Profile}/>
     </StackNav.Navigator>
   )
 }
