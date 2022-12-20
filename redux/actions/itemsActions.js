@@ -7,7 +7,6 @@ const getItems = createAsyncThunk('getItems', async()=> {
         const res = await axios.get(
             `${BASE_URL}items`
         );
-      /*   console.log(res); */
         return {
             items : res.data.response,
         }

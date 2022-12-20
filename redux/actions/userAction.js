@@ -1,11 +1,10 @@
-/* import {  createAsyncThunk } from "@reduxjs/toolkit";
+import {  createAsyncThunk } from "@reduxjs/toolkit";
+import { BASE_URL } from '../../src/api/url'
 import axios from "axios";
-import { BASE_URL } from '../../api/url'
 
 const newUser = createAsyncThunk('newUser', async(data)=> {
-    let url = `http://localhost:8000/users`
     try {
-        const res = await axios.post(url,data)
+        const res = await axios.post(`${BASE_URL}users`,data)
         if (res.data.success){
             return {
                 success: true,
@@ -27,7 +26,7 @@ const newUser = createAsyncThunk('newUser', async(data)=> {
     }
 })
 
-const logIn = createAsyncThunk('logIn', async (data) => {
+/* const logIn = createAsyncThunk('logIn', async (data) => {
     let url = `${BASE_URL}signin`
     try {
         let user = await axios.post(url, data)
@@ -73,12 +72,12 @@ const enterAgain = createAsyncThunk('enterAgain', async (token) =>{
             response: error.response.data.message
         }
     }
-})
+}) */
 
 const usersActions = {
     newUser,
-    logIn,
-    enterAgain
+/*     logIn,
+    enterAgain */
 }
 
-export default usersActions */
+export default usersActions
