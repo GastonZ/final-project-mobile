@@ -79,9 +79,10 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
       },
     containerForm:{
-    height:windowHeight/1.6,
+    height:windowHeight/1.5,
     display:"flex",
     alignItems:"center",
+    justifyContent:"flex-start"
     },
     titleForm:{
         fontWeight:"700",

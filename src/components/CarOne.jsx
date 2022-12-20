@@ -1,25 +1,50 @@
-import { View, Text, StyleSheet, Dimensions, ImageBackground, ScrollView, Pressable } from "react-native";
+import { View, Text, StyleSheet, Dimensions, ImageBackground, ScrollView, Pressable, Button } from "react-native";
 import React from "react";
+import { Hoverable } from "react-native-web-hover";
 const windowHeight = Dimensions.get('window').height;
 
-export default function CarOne() {
-  const image = {
-    uri: "https://i.pinimg.com/originals/46/64/b8/4664b84c57b05f6312595048957f1f53.png",
-  };
+export default function CarOne(props) {
+  const {car} = props
   return (
     <ScrollView>
-      <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+      <ImageBackground source={{uri:car.image}} resizeMode="cover" style={styles.image}>
         <View style={styles.container}>
           <Text style={styles.text}>
             <Text style={styles.decored}>[ </Text>
-            Model 3
+            {car.title}
             <Text style={styles.decored}> ]</Text>
           </Text>
-          <Text style={styles.text5}>Mobile version</Text>
           <View style={styles.ContainerButtonDetails}>
-        <Pressable
+          <Pressable
+      style={({ hovered, focused, pressed,}) => [
+        styles.buttonRoot,
+        hovered && styles.buttonHovered,
+        focused && styles.buttonFocused,
+        pressed && styles.buttonPressed
+      ]}
+    >
+      {({ hovered, focused, pressed }) => (
+        <View style={styles.buttonInner}>
+          <Text style={styles.buttonLabel}>
+            {}
+          </Text>
+        </View>
+      )}
+    </Pressable>
+
+      <Hoverable>
+        {({ hovered }) => (
+          <Button  style={styles.botnocntio}
+            title="More Information"
+            onPress={() => props.navigation.navigate('Details', car)}
+            color={hovered ? "black" : "grey"}
+          />
+        )}
+      </Hoverable>
+        {/* <Pressable
           style={styles.ButtonDetails}
-        ><Text style={styles.TextButtonDetails} >More Information</Text></Pressable>
+          onPress={() => props.navigation.navigate('Details', car)}
+        ><Text style={styles.TextButtonDetails} >More Information</Text></Pressable> */}
         </View>
         </View>
       </ImageBackground>
@@ -29,22 +54,24 @@ export default function CarOne() {
 
 const styles = StyleSheet.create({
   container: {
+    display:"flex",
     flex: 1,
     backgroundColor: "rgba(0,0,0,.550)",
     width: 420,
+    justifyContent:"space-between",
     height: windowHeight,
   },
   image: {
     flex: 1,
     justifyContent: "center",
-    height: 710,
+    height: 500,
   },
   text: {
     color: "#eee",
     fontSize: 25,
     fontWeight: "bold",
     textAlign: "center",
-    marginTop: 40,
+    marginTop:20,
   },
 
   barSeparate: {
@@ -78,7 +105,7 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 40,
+    marginBottom:20,
   },
   TextButtonDetails:{
     color: 'white',

@@ -1,59 +1,46 @@
 import React from "react";
+import carsActions from "../../redux/actions/carsActions";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import {
-  ImageBackground,
   ScrollView,
   StyleSheet,
-  View,
-  Text,
-  Image,
   Dimensions,
-  Pressable,
-
 } from "react-native";
-import CarOne from "../components/CarOne"; 
-import CarTwo from "../components/CarTwo";
-import CarThree from "../components/CarThree";
-import CarFour from "../components/CarFour";
-const windowHeight = Dimensions.get('window').height;
+import CarOne from "../components/CarOne";
+const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 
-export default function Home() {
-  const image = {
-    uri: "https://i.pinimg.com/originals/7e/21/48/7e2148953987ce74723756b779932271.jpg",
-  };
+export default function Home(props) {
 
+  let { getCars } = carsActions
+
+  let dispatch = useDispatch()
+
+  const { cars } = useSelector((state)=> state.cars)
+  
+  useEffect(()=>{
+    dispatch(getCars())
+    
+  },[])
   return (
     <ScrollView style={styles.container}>
-      <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-        <View style={styles.container}>
-          <Text style={styles.text}>
-            <Text style={styles.decored}>[ </Text>
-            Model S
-            <Text style={styles.decored}> ]</Text>
-          </Text>
-          <Text style={styles.text5}>Mobile version</Text>
-          <View style={styles.ContainerButtonDetails}>
-        <Pressable
-          style={styles.ButtonDetails}
-        ><Text style={styles.TextButtonDetails} >More Information</Text></Pressable>
-        </View>
-        </View>
-      </ImageBackground>
-      <CarOne></CarOne>
-      <CarTwo></CarTwo>
-      <CarThree></CarThree>
-      <CarFour></CarFour>
+      {cars.map((car) => {
+        return <CarOne car={car} navigation={props.navigation}></CarOne>;
+      })}
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
     backgroundColor: "rgba(0,0,0,.550)",
     width: 420,
     height: windowHeight,
-    textAlign: 'center',
+    textAlign: "center",
   },
   image: {
     flex: 1,
@@ -78,7 +65,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "light",
     margin: 4,
-    textAlign: 'center',
+    textAlign: "center",
   },
 
   decored: {
@@ -116,15 +103,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 6,
   },
-  
+
   ContainerButtonDetails: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     marginTop: 40,
   },
-  TextButtonDetails:{
-    color: 'white',
+  TextButtonDetails: {
+    color: "white",
     fontSize: 16,
     fontWeight: "bold",
   },
