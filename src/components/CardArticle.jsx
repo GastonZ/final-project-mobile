@@ -30,7 +30,7 @@ export default function CardArticle(props) {
               style={styles.imagefondo}
             ></Image>
             <Text>{item.name}</Text>
-            <Pressable style={styles.buttonshop09} onPress={() => props.navigation.navigate('DetailsArticle', item)}>
+            <Pressable style={styles.buttonshop09}  onPress={() => props.navigation.navigate('DetailsArticle', item._id)}>
               <Text style={styles.textButton}>Shop Now</Text>
             </Pressable>
           </View>
