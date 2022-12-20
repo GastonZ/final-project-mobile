@@ -1,5 +1,6 @@
-/* import { createReducer } from "@reduxjs/toolkit";
+import { createReducer } from "@reduxjs/toolkit";
 import usersActions from "../actions/userAction";
+/* import AsyncStorage from "@react-native-async-storage/async-storage"; */
 const { newUser, logIn, enterAgain } = usersActions
 
 const initialState ={
@@ -23,7 +24,7 @@ const userReducer = createReducer (initialState,
                 state.profiles.push(action.payload.response)
             }
         })
-        .addCase(logIn.fulfilled, (state, action)=> {
+       /*  .addCase(logIn.fulfilled, (state, action)=> {
 
             const { success,response } = action.payload
             if (success) {
@@ -73,9 +74,9 @@ const userReducer = createReducer (initialState,
                 }
                 return newState
             }
-        })
+        }) */
     })
 
 
         
-export default userReducer */
+export default userReducer
