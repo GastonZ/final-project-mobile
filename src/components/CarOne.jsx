@@ -1,5 +1,6 @@
-import { View, Text, StyleSheet, Dimensions, ImageBackground, ScrollView, Pressable } from "react-native";
+import { View, Text, StyleSheet, Dimensions, ImageBackground, ScrollView, Pressable, Button } from "react-native";
 import React from "react";
+import { Hoverable } from "react-native-web-hover";
 const windowHeight = Dimensions.get('window').height;
 
 export default function CarOne(props) {
@@ -14,10 +15,36 @@ export default function CarOne(props) {
             <Text style={styles.decored}> ]</Text>
           </Text>
           <View style={styles.ContainerButtonDetails}>
-        <Pressable
+          <Pressable
+      style={({ hovered, focused, pressed,}) => [
+        styles.buttonRoot,
+        hovered && styles.buttonHovered,
+        focused && styles.buttonFocused,
+        pressed && styles.buttonPressed
+      ]}
+    >
+      {({ hovered, focused, pressed }) => (
+        <View style={styles.buttonInner}>
+          <Text style={styles.buttonLabel}>
+            {}
+          </Text>
+        </View>
+      )}
+    </Pressable>
+
+      <Hoverable>
+        {({ hovered }) => (
+          <Button  style={styles.botnocntio}
+            title="More Information"
+            onPress={() => props.navigation.navigate('Details', car)}
+            color={hovered ? "black" : "grey"}
+          />
+        )}
+      </Hoverable>
+        {/* <Pressable
           style={styles.ButtonDetails}
           onPress={() => props.navigation.navigate('Details', car)}
-        ><Text style={styles.TextButtonDetails} >More Information</Text></Pressable>
+        ><Text style={styles.TextButtonDetails} >More Information</Text></Pressable> */}
         </View>
         </View>
       </ImageBackground>
