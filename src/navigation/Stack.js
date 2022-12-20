@@ -6,6 +6,7 @@ import Details from '../screen/Details';
 import SignUp from '../screen/SignUp';
 import SignIn from '../screen/SignIn'
 import Shop from '../screen/Shop'
+import DetailsArticle from '../screen/DetailsArticle';
 import Profile from '../screen/Profile';
 
 
@@ -15,6 +16,7 @@ export default function Stack() {
     <StackNav.Navigator>
         <StackNav.Screen name= "Home" component={Home}/>
         <StackNav.Screen name= "Details" component={Details}/>
+        <StackNav.Screen name= "DetailsArticle" component={DetailsArticle}/>
         <StackNav.Screen name="SignUp" component={SignUp}/>
         <StackNav.Screen name="SignIn" component={SignIn}/>
         <StackNav.Screen name="Shop" component={Shop}/>

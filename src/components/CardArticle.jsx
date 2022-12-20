@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import itemsActions from "../../redux/actions/itemsActions";
 import axios from "axios";
 import { BASE_URL } from "../api/url";
-export default function CardArticle() {
+export default function CardArticle(props) {
   let { getItems } = itemsActions;
 
   let dispatch = useDispatch();
@@ -30,7 +30,7 @@ export default function CardArticle() {
               style={styles.imagefondo}
             ></Image>
             <Text>{item.name}</Text>
-            <Pressable style={styles.buttonshop09}>
+            <Pressable style={styles.buttonshop09} onPress={() => props.navigation.navigate('DetailsArticle', item)}>
               <Text style={styles.textButton}>Shop Now</Text>
             </Pressable>
           </View>
