@@ -7,39 +7,27 @@ import usersActions from '../../redux/actions/userAction';
 export default function OrderCar() {
     const image = { uri: "https://cdn.discordapp.com/attachments/1050972585002795096/1052632192100073512/aesthetic.png" };
     const [datosOfNewUser, setDatosOfNewUser] = useState({
-        name: "herna",
-        lastName: "cava",
-        email: "cava@gmail.com",
-        password: "asd123",
+        name: "",
+        lastName: "",
+        email: "",
+        password: "",
     });
     let {newUser } = usersActions
     let dispatch = useDispatch()
     async function createNewUser() {
         try {
             let res = await dispatch(newUser(datosOfNewUser))
-            console.log(res)
-              if (res.payload.success){
-                Alert.alert({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'User sign Up ! Next step is to login',
-                    showConfirmButton: false,
-                    timer: 2500
-                  })
-/*                   setDatosOfNewUser={
+               if (res.payload.success){
+                Alert.alert(`User sign Up ! Next step is to login`)
+                  setDatosOfNewUser={
                     name: "",
                     lastName: "",
                     email: "",
                     password: "",
-                } */
+                }
             } else {
-                Alert.alert({
-                    position: 'center',
-                    title: res.payload.response,
-                    showConfirmButton: true,
-                    timer: 2000
-                  })
-            } 
+                Alert.alert(`Email exist`)
+            }  
         } catch(error){
             console.log(error.message)
         }
@@ -50,7 +38,7 @@ export default function OrderCar() {
                 <View style={styles.containerImg}>
                     <View>
                         <View style={styles.textTitleContainer}>
-                            {/* <Text style={styles.segundoTexto}><Text style={styles.lineOrange}>| </Text> Create your account</Text>
+                            <Text style={styles.segundoTexto}><Text style={styles.lineOrange}>| </Text> Create your account</Text>
                             <TextInput onChangeText={(newText) =>
                                 setDatosOfNewUser({ ...datosOfNewUser, name: newText })
                             }
@@ -75,7 +63,7 @@ export default function OrderCar() {
                                     secureTextEntry={true}
                                     autoCorrect={false} 
                                   style={styles.textTitleTwo} placeholder="Password" />
- */}
+
                             <Button onPress={createNewUser} title='Send' color={'#24262B'}></Button>
                         </View>
                         <View>

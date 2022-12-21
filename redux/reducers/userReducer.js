@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import usersActions from "../actions/userAction";
-/* import AsyncStorage from "@react-native-async-storage/async-storage"; */
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const { newUser, logIn, enterAgain } = usersActions
 
 const initialState ={
@@ -24,14 +24,20 @@ const userReducer = createReducer (initialState,
                 state.profiles.push(action.payload.response)
             }
         })
-       /*  .addCase(logIn.fulfilled, (state, action)=> {
-
+         .addCase(logIn.fulfilled, (state, action)=> {
             const { success,response } = action.payload
             if (success) {
                 let { userToken,token } = response //este token es el codigo que viene del backend
-                localStorage.setItem('token',JSON.stringify({token: {user: token}})) //este objeto token va a guardar
+                async function setToken() {
+                    try {
+                        await AsyncStorage.setItem("token", JSON.stringify({ token: { user: token } }));
+                      } catch (error) {
+                        console.log(error.message);
+                      }
+                    }
+                 //este objeto token va a guardar
                 //la propiedad con el nombre del tipo de token y el token que guarda
-             
+                setToken();
                 let newState = {
                     ...state,
                     name: userToken.name,
@@ -49,7 +55,7 @@ const userReducer = createReducer (initialState,
                 return newState
             }
         })
-        .addCase(enterAgain.fulfilled, (state,action)=> {
+       /*  .addCase(enterAgain.fulfilled, (state,action)=> {
             
             const { success, response} = action.payload
             console.log(response);
@@ -74,7 +80,7 @@ const userReducer = createReducer (initialState,
                 }
                 return newState
             }
-        }) */
+        })  */
     })
 
 

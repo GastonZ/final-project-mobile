@@ -4,7 +4,9 @@ import axios from "axios";
 
 const newUser = createAsyncThunk('newUser', async(data)=> {
     try {
-        const res = await axios.post(`${BASE_URL}users`,data)
+        const res = await axios.post('https://backendmotorx.onrender.com/api/auth',data)
+        console.log(data);
+        console.log(res.data.success);
         if (res.data.success){
             return {
                 success: true,
@@ -26,11 +28,10 @@ const newUser = createAsyncThunk('newUser', async(data)=> {
     }
 })
 
-/* const logIn = createAsyncThunk('logIn', async (data) => {
-    let url = `${BASE_URL}signin`
+ const logIn = createAsyncThunk('logIn', async (data) => {
+    let url = 'https://backendmotorx.onrender.com/api/auth/signin'
     try {
         let user = await axios.post(url, data)
-        console.log(user);
 
         if(user.data.response.userToken.id) {
             return {
@@ -52,7 +53,7 @@ const newUser = createAsyncThunk('newUser', async(data)=> {
     }
 })
 
-const enterAgain = createAsyncThunk('enterAgain', async (token) =>{
+/* const enterAgain = createAsyncThunk('enterAgain', async (token) =>{
     let url = `${BASE_URL}token`
     let headers = {headers: {'Authorization': `Bearer ${token}`}}
     try {
@@ -76,8 +77,8 @@ const enterAgain = createAsyncThunk('enterAgain', async (token) =>{
 
 const usersActions = {
     newUser,
-/*     logIn,
-    enterAgain */
+    logIn,
+ /*    enterAgain  */
 }
 
 export default usersActions
