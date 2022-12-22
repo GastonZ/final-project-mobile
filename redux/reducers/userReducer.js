@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import usersActions from "../actions/userAction";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-const { newUser, logIn, enterAgain,logOut } = usersActions
+const { newUser, logIn, enterAgain,logOut,getOneUser } = usersActions
 
 const initialState ={
     profiles : [],
@@ -107,6 +107,16 @@ const userReducer = createReducer (initialState,
                 return console.log(response);
             }
         })
+        .addCase(getOneUser.fulfilled,(state,action)=> {
+            console.log(action.payload);
+            return{
+                ...state,
+            nameProfile: action.payload.user.name,
+            photoProfile: action.payload.user.photo,
+            bannerProfile: action.payload.user.banner
+            }
+        })
+        
     })
 
 

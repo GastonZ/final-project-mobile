@@ -90,12 +90,59 @@ const logOut = createAsyncThunk('logOut', async (token)=> {
         }
     }
 })
+const editUserInfo = createAsyncThunk('editUserInfo', async ({id,data,token})=>{
+    let url = `https://backendmotorx.onrender.com/api/auth/me/${id}`
+    let headers = {headers: {'Authorization':` Bearer ${token}`}}
+    try {
+        let res = await axios.patch(url,data,headers)
+        console.log(res);
+        if(res.data.success){
+            return {
+                responseId: res.data.id,
+                success: true,
+                response: data
+            }
+        } else {
+            return {
+                success: false,
+                response: res.data.message
+            }
+        }
+    } catch (error) {
+        console.log(error);
+        return {
+          success: false, response:"error"
+        }
+    }
+})
+
+const getOneUser = createAsyncThunk("getOneUser", async ({id, token}) => {
+
+    let headers = {headers: {'Authorization':` Bearer ${token}`}}
+    let url = `https://backendmotorx.onrender.com/api/auth/me/${id}`
+    try {
+        const res = await axios.get(url , headers);
+        console.log(res);
+        return {
+            id:id,
+            user: res.data.response};
+      } catch (error) {
+        console.log(error);
+        return {
+          payload: "Error",
+        };
+      }
+
+      
+})
 
 const usersActions = {
     newUser,
     logIn,
     enterAgain,
     logOut,
+    editUserInfo,
+    getOneUser,
 }
 
 export default usersActions

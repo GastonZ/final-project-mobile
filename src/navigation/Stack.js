@@ -9,7 +9,6 @@ import Shop from '../screen/Shop'
 import DetailsArticle from '../screen/DetailsArticle';
 import Profile from '../screen/Profile';
 
-
 const StackNav = createNativeStackNavigator()
 export default function Stack() {
   return (
