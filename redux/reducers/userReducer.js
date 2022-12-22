@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import usersActions from "../actions/userAction";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-const { newUser, logIn, enterAgain } = usersActions
+const { newUser, logIn, enterAgain,logOut,getOneUser } = usersActions
 
 const initialState ={
     profiles : [],
@@ -55,7 +55,7 @@ const userReducer = createReducer (initialState,
                 return newState
             }
         })
-       /*  .addCase(enterAgain.fulfilled, (state,action)=> {
+         .addCase(enterAgain.fulfilled, (state,action)=> {
             
             const { success, response} = action.payload
             console.log(response);
@@ -80,7 +80,43 @@ const userReducer = createReducer (initialState,
                 }
                 return newState
             }
-        })  */
+        })
+        .addCase(logOut.fulfilled, (state,action)=> {
+            const { success, response } = action.payload
+            if(success){
+                async function removeToken() {
+                    try {
+                      await AsyncStorage.removeItem('token');
+                    } catch (error) {
+                      console.log(error.message);
+                    }
+                  }
+                  removeToken();
+                let newState = {
+                    ...state,
+                    nameProfile: "",
+                    photoProfile: "",
+                    bannerProfile: "",
+                    logged: false,
+                    token: "",
+                    role: "",
+                    id: ""
+                }
+                return newState
+            } else {
+                return console.log(response);
+            }
+        })
+        .addCase(getOneUser.fulfilled,(state,action)=> {
+            console.log(action.payload);
+            return{
+                ...state,
+            nameProfile: action.payload.user.name,
+            photoProfile: action.payload.user.photo,
+            bannerProfile: action.payload.user.banner
+            }
+        })
+        
     })
 
 

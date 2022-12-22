@@ -10,7 +10,6 @@ import DetailsArticle from '../screen/DetailsArticle';
 import Profile from '../screen/Profile';
 import Cart from '../screen/Cart';
 
-
 const StackNav = createNativeStackNavigator()
 export default function Stack() {
   return (

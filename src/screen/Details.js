@@ -24,7 +24,7 @@ export default function Details(props) {
     <ScrollView style={styles.container}>
       <ImageBackground
         source={{uri: car.imageDetails}}
-        resizeMode="cover"
+        resizeMode="contain"
         style={styles.imagefondo}
       >
         <View style={styles.carrusel}>
@@ -242,6 +242,7 @@ const styles = StyleSheet.create({
   },
   description2: {
     fontWeight: "400",
+    color:"white"
   },
   containerFirstDescription:{
     display:"flex",

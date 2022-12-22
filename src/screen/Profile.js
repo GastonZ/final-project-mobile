@@ -4,7 +4,7 @@ import { Hoverable, Pressable, } from 'react-native-web-hover'
 import UserProfile from '../components/UserProfile';
 
 export default function Profile() {
-    const image = { uri: "https://cdn.wallpapersafari.com/13/5/tcfibJ.jpg" };
+    const image = { uri: "https://firebasestorage.googleapis.com/v0/b/motorx-firebase.appspot.com/o/2b114b82-bc5e-4c2f-a9bc-36a3e56cad21?alt=media&token=c7d0c194-6647-4830-b233-93e76dd05a54" };
   return (
     <ScrollView>
     <View>
