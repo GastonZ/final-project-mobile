@@ -25,12 +25,12 @@ export default function DetailsArticle(props) {
       <View style={styles.itemDescriptionContainerr} >
         <Text  style={styles.textEachitemPrice}>Price: ${price}</Text>
         <View  style={styles.containerEachitem2}>
-          <Text style={styles.descriptionTittle}>Quantity</Text>
-          <View style={styles.quantityContainer}>
+          {/* <Text style={styles.descriptionTittle}>Quantity</Text> */}
+       {/*    <View style={styles.quantityContainer}>
           <Image source={less} style={styles.quantytiItems}/>
           <Text style={styles.descriptionTittle}>1</Text>
           <Image source={plus} style={styles.quantytiItemss}/>
-          </View>
+          </View> */}
         </View>
         <Pressable style={styles.buttonEachitemCart}> 
         <Text style={styles.textButton}>Add to cart</Text></Pressable>
