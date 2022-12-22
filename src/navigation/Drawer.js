@@ -11,6 +11,7 @@ import {useEffect} from "react"
 import { useDispatch, useSelector } from "react-redux";
 import usersActions from "../../redux/actions/userAction";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Cart from "../screen/Cart";
 const DrawerNav = createDrawerNavigator();
 
 export default function Drawer() {
@@ -35,6 +36,7 @@ export default function Drawer() {
       {!logged? (<DrawerNav.Screen name="SignIn" component={SignIn}/>):null}
       {!logged? (<DrawerNav.Screen name="SignUp" component={SignUp} />):null}
       {logged?  (<DrawerNav.Screen name="Profile" component={Profile} />):null}
+        <DrawerNav.Screen name="Cart" component={Cart}/>
     </DrawerNav.Navigator>
   )
 }
