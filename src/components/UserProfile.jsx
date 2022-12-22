@@ -6,15 +6,26 @@ import {
   Pressable,
   Button,
   Image,
+  Alert,
 } from "react-native";
 import React from "react";
 import { Hoverable } from "react-native-web-hover";
-
-export default function UserProfile() {
+import usersActions from "../../redux/actions/userAction";
+import { useDispatch, useSelector } from 'react-redux'
+export default function UserProfile(props) {
   const image = {
     uri: "https://media.tycsports.com/files/2022/12/18/517475/rodrigo-de-paul_416x234.webp",
   };
+  let { token} = useSelector(store => store.usuario)
+  let {logOut} = usersActions
+  let dispatch = useDispatch()
 
+
+  async function desconect () {
+    await dispatch(logOut(token))
+    Alert.alert('Bye, see you later')
+    props.navigation.navigate("Home");;
+}
   return (
     <View style={styles.containerUser}>
       <Image
@@ -66,7 +77,7 @@ export default function UserProfile() {
           {({ hovered }) => (
             <Button
               title="Logout"
-              onPress={() => {}}
+              onPress={desconect}
               color={hovered ? "black" : "grey"}
             />
           )}

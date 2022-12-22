@@ -24,7 +24,7 @@ export default function CardArticle(props) {
           <View style={styles.cardBestSeller09}>
             <Image
               source={{
-                uri: item.image,
+                uri: item.picture_url,
               }}
               resizeMode="cover"
               style={styles.imagefondo}

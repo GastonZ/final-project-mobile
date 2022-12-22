@@ -53,8 +53,8 @@ const newUser = createAsyncThunk('newUser', async(data)=> {
     }
 })
 
-/* const enterAgain = createAsyncThunk('enterAgain', async (token) =>{
-    let url = `${BASE_URL}token`
+ const enterAgain = createAsyncThunk('enterAgain', async (token) =>{
+    let url = 'https://backendmotorx.onrender.com/api/auth/token'
     let headers = {headers: {'Authorization': `Bearer ${token}`}}
     try {
         let user = await axios.post(url,null,headers)
@@ -73,12 +73,29 @@ const newUser = createAsyncThunk('newUser', async(data)=> {
             response: error.response.data.message
         }
     }
-}) */
+}) 
+const logOut = createAsyncThunk('logOut', async (token)=> {
+    let url = 'https://backendmotorx.onrender.com/api/auth/signout'
+    let headers = {headers: {'Authorization': `Bearer ${token}`}}
+    try {
+        let user = await axios.put(url, null, headers)
+        return {
+            success: true,
+            response: user.data.message
+        }
+    } catch (error) {
+        return {
+            success: false,
+            response: error.response.data.message
+        }
+    }
+})
 
 const usersActions = {
     newUser,
     logIn,
- /*    enterAgain  */
+    enterAgain,
+    logOut,
 }
 
 export default usersActions

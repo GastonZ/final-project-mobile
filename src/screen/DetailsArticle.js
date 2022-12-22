@@ -17,10 +17,10 @@ export default function DetailsArticle(props) {
       detailItem()
     },[id]) 
      console.log(filter); 
-  let { name, image, description, price } =  filter ;
+  let { name, picture_url, description, price } =  filter ;
   return (
     <ScrollView style={styles.containerEachitem} contentContainerStyle={{ alignItems: 'center' }}>
-    <Image source={{uri: image}} style={styles.imageEachitem}/>
+    <Image source={{uri: picture_url}} style={styles.imageEachitem}/>
     <Text style={styles.textTitleEachitem}>{name}</Text>
       <View style={styles.itemDescriptionContainerr} >
         <Text  style={styles.textEachitemPrice}>Price: ${price}</Text>
