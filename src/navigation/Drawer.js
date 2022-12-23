@@ -3,6 +3,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Home from '../screen/Home';
  import Details from '../screen/Details';
  import Stack from '../navigation/Stack'
+ import Stack2 from "./Stack2";
 import SignUp from '../screen/SignUp';
 import SignIn from '../screen/SignIn'
 import Shop from '../screen/Shop'
@@ -30,8 +31,8 @@ export default function Drawer() {
     },[]) 
   return (
     <DrawerNav.Navigator initialRoutName= "Home">
-        <DrawerNav.Screen name="Home" component={Stack}/>
-        <DrawerNav.Screen name="Shop" component={Shop}/>
+        <DrawerNav.Screen name="Home" component={Stack2}/>
+        <DrawerNav.Screen name="Shop" component={Stack}/>
        {/*  <DrawerNav.Screen name="Details" component={Details}/> */}
        {/*  <DrawerNav.Screen name= "DetailsArticle" component={DetailsArticle}/> */}
       {!logged? (<DrawerNav.Screen name="SignIn" component={SignIn}/>):null}

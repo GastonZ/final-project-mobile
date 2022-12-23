@@ -10,13 +10,13 @@ import DetailsArticle from '../screen/DetailsArticle';
 import Profile from '../screen/Profile';
 import Cart from '../screen/Cart';
 const StackNav = createNativeStackNavigator()
-export default function Stack() {
+export default function Stack2() {
   return (
     <StackNav.Navigator>
-{/*         <StackNav.Screen name= "Home" component={Home}/> */}
-        <StackNav.Screen name="Shop" component={Shop}/>
-{/*         <StackNav.Screen name= "Details" component={Details}/> */}
-        <StackNav.Screen name= "DetailsArticle" component={DetailsArticle}/>
+        <StackNav.Screen name= "Home" component={Home}/>
+{/*         <StackNav.Screen name="Shop" component={Shop}/> */}
+        <StackNav.Screen name= "Details" component={Details}/>
+{/*         <StackNav.Screen name= "DetailsArticle" component={DetailsArticle}/> */}
 {/*         <StackNav.Screen name="SignUp" component={SignUp}/>
         <StackNav.Screen name="SignIn" component={SignIn}/>
         <StackNav.Screen name="Profile" component={Profile}/>
