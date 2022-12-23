@@ -14,12 +14,13 @@ const StackNav = createNativeStackNavigator()
 export default function Stack() {
   return (
     <StackNav.Navigator>
+        <StackNav.Screen name="Shop" component={Shop}/>
         <StackNav.Screen name= "Home" component={Home}/>
         <StackNav.Screen name= "Details" component={Details}/>
+
         <StackNav.Screen name= "DetailsArticle" component={DetailsArticle}/>
         <StackNav.Screen name="SignUp" component={SignUp}/>
         <StackNav.Screen name="SignIn" component={SignIn}/>
-        <StackNav.Screen name="Shop" component={Shop}/>
         <StackNav.Screen name="Profile" component={Profile}/>
         <StackNav.Screen name="Cart" component={Cart}/>
     </StackNav.Navigator>

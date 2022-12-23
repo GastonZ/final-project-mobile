@@ -37,7 +37,9 @@ export default function Drawer() {
       {!logged? (<DrawerNav.Screen name="SignIn" component={SignIn}/>):null}
       {!logged? (<DrawerNav.Screen name="SignUp" component={SignUp} />):null}
       {logged?  (<DrawerNav.Screen name="Profile" component={Profile} />):null}
-        <DrawerNav.Screen name="Cart" component={Cart}/>
+      {logged?  (<DrawerNav.Screen name="Cart" component={Cart} />):null}
+
+        
     </DrawerNav.Navigator>
   )
 }

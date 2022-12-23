@@ -4,19 +4,14 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import itemsActions from "../../redux/actions/itemsActions";
-import axios from "axios";
-import { BASE_URL } from "../api/url";
 export default function CardArticle(props) {
   let { getItems } = itemsActions;
-
   let dispatch = useDispatch();
-
   const {items} = useSelector((state) => state.items);
 
   useEffect(() => {
     dispatch(getItems());
   }, []);
-  console.log(items);
   return (
     <>
        {items.map((item) => {
@@ -29,7 +24,7 @@ export default function CardArticle(props) {
               resizeMode="cover"
               style={styles.imagefondo}
             ></Image>
-            <Text>{item.name}</Text>
+            <Text>{item.title}</Text>
             <Pressable style={styles.buttonshop09}  onPress={() => props.navigation.navigate('DetailsArticle', item._id)}>
               <Text style={styles.textButton}>Shop Now</Text>
             </Pressable>

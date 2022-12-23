@@ -63,7 +63,8 @@ export default function OrderCar(props) {
 
               <TextInput style={styles.textTitleTwo} 
               onChangeText={(newText) => setUser({ ...user, password: newText })}
-              defaultValue={user.password} placeholder="Password" />
+              defaultValue={user.password} secureTextEntry={true}
+              autoCorrect={false}  placeholder="Password" />
 
               <Button onPress={signIn} title="Sign in" color={"#24262B"}></Button>
             </View>

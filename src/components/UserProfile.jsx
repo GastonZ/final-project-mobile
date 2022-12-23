@@ -17,17 +17,17 @@ export default function UserProfile(props) {
     uri: "https://firebasestorage.googleapis.com/v0/b/motorx-firebase.appspot.com/o/859b703b-1459-4261-a78e-a2e6ebc27a34?alt=media&token=a59f5c0f-78ff-4727-9fc8-0c5497d72e31",
   };
   let{ token, id } = useSelector(store => store.usuario)
-  let {getOneUser ,logOut, editUserInfo} = usersActions
-/*   let dispatch = useDispatch()
-  useEffect(()=>{
+  let {logOut} = usersActions
+   let dispatch = useDispatch()
+/*   useEffect(()=>{
     dispatch(getOneUser({id: id, token: token}))
-  },[]) */
+  },[])  */
    console.log(id); 
 
   async function desconect () {
     await dispatch(logOut(token))
     Alert.alert('Bye, see you later')
-    props.navigation.navigate("Home");;
+    props.navigation.navigate("Home");
 }
   return (
     <View style={styles.containerUser}>

@@ -1,13 +1,20 @@
-import { View, Text, ScrollView,StyleSheet,Image,Dimensions, Pressable } from "react-native";
+import { View, Text, ScrollView,StyleSheet,Image,Dimensions,Alert, Pressable } from "react-native";
 import React,{useEffect,useState} from "react";
 import axios from "axios";
+import { useSelector, useDispatch } from 'react-redux';
 import { BASE_URL } from "../api/url";
-import less from "../../assets/less.png";
-import plus from "../../assets/plus.png";  
+import cartActions from "../../redux/actions/cartActions"; 
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
+
 export default function DetailsArticle(props) {
   let id = props.route.params;
+  let { addToCart } = cartActions
+  let { itemsInCart } = useSelector((store) => store.cart)
+  console.log('itemmmsssCAAAARTSSSS')
+  console.log(itemsInCart);
+  console.log('itemmmsssCAAAARTSSSS')
+  let dispatch = useDispatch()
   let [filter, setFilter] = useState([])
   async function detailItem() {
       await axios.get(`${BASE_URL}items`)
@@ -16,24 +23,43 @@ export default function DetailsArticle(props) {
     useEffect(()=> {
       detailItem()
     },[id]) 
-     console.log(filter); 
-  let { name, picture_url, description, price } =  filter ;
+    /*  console.log(filter);  */
+  let { title, picture_url, description, unit_price } =  filter ;
+  console.log('filtereeeeeeeee')
+  console.log(filter);
+  console.log('filtereeeeeeeee')
+  
+  async function addToCartBtn() {
+
+      let data = {
+          title,
+          unit_price,
+          picture_url,
+          id,
+      }
+      console.log('dataaaaaaaaaa')
+      console.log(data);
+      console.log('dataaaaaaaaaa')
+      try {
+        let res = await dispatch(addToCart(data))
+        console.log('reeeessssssssssssssss')
+        console.log(res.payload);
+        console.log('reeeessssssssssssssss')
+        Alert.alert('Added to the cart')
+      } catch (error) {
+        Alert.alert('no ?')
+      }
+
+     /*  console.log(data); */
+  }
   return (
     <ScrollView style={styles.containerEachitem} contentContainerStyle={{ alignItems: 'center' }}>
     <Image source={{uri: picture_url}} style={styles.imageEachitem}/>
-    <Text style={styles.textTitleEachitem}>{name}</Text>
+    <Text style={styles.textTitleEachitem}>{title}</Text>
       <View style={styles.itemDescriptionContainerr} >
-        <Text  style={styles.textEachitemPrice}>Price: ${price}</Text>
-        <View  style={styles.containerEachitem2}>
-          {/* <Text style={styles.descriptionTittle}>Quantity</Text> */}
-       {/*    <View style={styles.quantityContainer}>
-          <Image source={less} style={styles.quantytiItems}/>
-          <Text style={styles.descriptionTittle}>1</Text>
-          <Image source={plus} style={styles.quantytiItemss}/>
-          </View> */}
-        </View>
+        <Text  style={styles.textEachitemPrice}>Price: ${unit_price}</Text>
         <Pressable style={styles.buttonEachitemCart}> 
-        <Text style={styles.textButton}>Add to cart</Text></Pressable>
+        <Text style={styles.textButton} onPress={addToCartBtn}>Add to cart</Text></Pressable>
       </View>
       <Text style={styles.descriptionTittle}>Description</Text>
         <Text  style={styles.containerEachitem3}>{description}</Text>
@@ -49,11 +75,7 @@ const styles = StyleSheet.create({
     textAlign:"center",
     marginBottom:40,
   },
-  containerEachitem2:{
-    width:"20%",
-    height:50,
-    alignItems:"center",
-  },
+
   containerEachitem:{
     width: windowWidth,
     backgroundColor: "#F8F8F8",
@@ -90,24 +112,7 @@ buttonEachitemCart:{
     fontWeight: "bold",
     color: "#F8F8F8",
 },
-descriptionTittle:{
-    color: "black",
-    fontSize:16,
-    fontWeight: "600",
-},
-quantityContainer:{
-    display: "flex",
-    flexDirection:"row"
-},
-quantytiItems:{
-    height: 25,
-   marginRight: 10,
 
-},
-quantytiItemss:{
-    height: 25,
-   marginLeft: 10,
-},
 textEachitemPrice:{
 
 },

@@ -4,7 +4,7 @@ import axios from "axios";
 
 const newUser = createAsyncThunk('newUser', async(data)=> {
     try {
-        const res = await axios.post('https://backendmotorx.onrender.com/api/auth',data)
+        const res = await axios.post('https://backendmotorx2.onrender.com/api/auth',data)
         console.log(data);
         console.log(res.data.success);
         if (res.data.success){
@@ -29,7 +29,7 @@ const newUser = createAsyncThunk('newUser', async(data)=> {
 })
 
  const logIn = createAsyncThunk('logIn', async (data) => {
-    let url = 'https://backendmotorx.onrender.com/api/auth/signin'
+    let url = 'https://backendmotorx2.onrender.com/api/auth/signin'
     try {
         let user = await axios.post(url, data)
 
@@ -54,7 +54,7 @@ const newUser = createAsyncThunk('newUser', async(data)=> {
 })
 
  const enterAgain = createAsyncThunk('enterAgain', async (token) =>{
-    let url = 'https://backendmotorx.onrender.com/api/auth/token'
+    let url = 'https://backendmotorx2.onrender.com/api/auth/token'
     let headers = {headers: {'Authorization': `Bearer ${token}`}}
     try {
         let user = await axios.post(url,null,headers)
@@ -75,7 +75,7 @@ const newUser = createAsyncThunk('newUser', async(data)=> {
     }
 }) 
 const logOut = createAsyncThunk('logOut', async (token)=> {
-    let url = 'https://backendmotorx.onrender.com/api/auth/signout'
+    let url = 'https://backendmotorx2.onrender.com/api/auth/signout'
     let headers = {headers: {'Authorization': `Bearer ${token}`}}
     try {
         let user = await axios.put(url, null, headers)
@@ -91,7 +91,7 @@ const logOut = createAsyncThunk('logOut', async (token)=> {
     }
 })
 const editUserInfo = createAsyncThunk('editUserInfo', async ({id,data,token})=>{
-    let url = `https://backendmotorx.onrender.com/api/auth/me/${id}`
+    let url = `https://backendmotorx2.onrender.com/api/auth/me/${id}`
     let headers = {headers: {'Authorization':` Bearer ${token}`}}
     try {
         let res = await axios.patch(url,data,headers)
@@ -119,7 +119,7 @@ const editUserInfo = createAsyncThunk('editUserInfo', async ({id,data,token})=>{
 const getOneUser = createAsyncThunk("getOneUser", async ({id, token}) => {
 
     let headers = {headers: {'Authorization':` Bearer ${token}`}}
-    let url = `https://backendmotorx.onrender.com/api/auth/me/${id}`
+    let url = `https://backendmotorx2.onrender.com/api/auth/me/${id}`
     try {
         const res = await axios.get(url , headers);
         console.log(res);

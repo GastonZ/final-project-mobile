@@ -1,1 +1,1 @@
- export const BASE_URL = 'https://backendmotorx.onrender.com/api/'
+ export const BASE_URL = 'https://backendmotorx2.onrender.com/api/'

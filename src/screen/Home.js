@@ -13,6 +13,7 @@ const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 
 export default function Home(props) {
+  console.log(props);
 
   let { getCars } = carsActions
 
